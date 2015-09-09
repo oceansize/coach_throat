@@ -21,12 +21,7 @@ describe Coordinate do
   end
 
   it 'creates a coordinate from a string' do
-    coordinate = Coordinate.parse('B4')
+    coordinate = Coordinate.parse('b4')
     expect(coordinate).to eq b_coordinate
-  end
-
-  it 'creates a coordinate even with the default values!' do
-    default_coordinate = Coordinate.parse('A1')
-    expect(default_coordinate).to eq coordinate
   end
 end

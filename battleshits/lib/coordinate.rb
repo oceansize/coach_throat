@@ -5,9 +5,11 @@ class Coordinate < Struct.new(:latitude, :longitude)
   end
 
   def self.parse(coordinate_string)
-    string_array = coordinate_string.chars
-    latitude = string_array.first.to_sym
-    longitude = string_array.last.to_i
+    if !(coordinate_string.upcase =~ /\A(\w)(\d+)\z/)
+      raise 'invalid coordinate'
+    end
+    latitude = $1.to_sym
+    longitude = $2.to_i
     new(latitude, longitude)
   end
 

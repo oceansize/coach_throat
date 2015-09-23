@@ -19,7 +19,7 @@ describe Board do
 	end
 
 	it "can place a ship" do
-		board.grid[:A2] = second_cell
+		#board.grid[:A2] = second_cell
 		expect(cell).to receive(:content=).with(ship)
 		board.place(ship,:A1)
 	end

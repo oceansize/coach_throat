@@ -16,9 +16,7 @@ class BookmarkMoocher < Sinatra::Base
 
   post '/links' do
     link = Link.new(url: params[:url], title: params[:title])
-    tag  = Tag.new(name: params[:tag])
-    link.tags << tag
-    link.save
+    assign_tags(link, params[:tags])
     redirect '/links'
   end
 
@@ -30,6 +28,11 @@ class BookmarkMoocher < Sinatra::Base
     tag = Tag.first(name: params[:name])
     @links = tag ? tag.links : []
     erb :'links/index'
+  end
+
+  def assign_tags(link, tags)
+    tags.split.each { |tag| link.tags << Tag.new(name: tag) }
+    link.save
   end
 
   # start the server if ruby file executed directly

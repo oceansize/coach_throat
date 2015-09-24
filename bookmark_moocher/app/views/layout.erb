@@ -7,6 +7,14 @@
     <nav>
       <a href="/">View Bookmarks</a>
       <a href="/links/new">Add Bookmark</a>
+      <a href="/users/new">Sign in</a>
+    </nav>
+    <% # require 'pry'; binding.pry %>
+    <% if current_user %>
+      Welcome, <%= current_user.email %>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>

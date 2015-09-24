@@ -1,4 +1,5 @@
 require 'data_mapper'
+require 'dm-validations'
 
 env = ENV['RACK_ENV'] || 'development'
 
@@ -6,5 +7,7 @@ env = ENV['RACK_ENV'] || 'development'
 
  require './app/models/link'
  require './app/models/tag'
+ require './app/models/user'
 
  DataMapper.finalize
+ DataMapper.auto_upgrade!
